@@ -25,7 +25,7 @@ import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
+import TabOneScreen from "../screens/ChatScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import {
   RootStackParamList,
@@ -33,6 +33,7 @@ import {
   RootTabScreenProps,
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
+import ChatScreen from "../screens/ChatScreen";
 
 export default function Navigation({
   colorScheme,
@@ -137,7 +138,7 @@ function MainTabNavigator() {
           tabBarLabel: () => null,
         }}
       />
-      <MainTab.Screen name="Chats" component={TabTwoScreen} />
+      <MainTab.Screen name="Chats" component={ChatScreen} />
       <MainTab.Screen name="Status" component={TabTwoScreen} />
       <MainTab.Screen name="Calls" component={TabTwoScreen} />
     </MainTab.Navigator>
