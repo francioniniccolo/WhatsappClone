@@ -8,6 +8,8 @@ import {
   Octicons,
   MaterialCommunityIcons,
   Fontisto,
+  MaterialIcons,
+  FontAwesome5,
 } from "@expo/vector-icons";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -35,6 +37,8 @@ import {
 import LinkingConfiguration from "./LinkingConfiguration";
 import ChatScreen from "../screens/ChatScreen";
 import ChatRoomScreen from "../screens/ChatRoomScreen";
+import Contacts from "../screens/ContactsScreen";
+import ContactsScreen from "../screens/ContactsScreen";
 
 export default function Navigation({
   colorScheme,
@@ -63,9 +67,8 @@ function RootNavigator() {
       screenOptions={{
         headerStyle: {
           backgroundColor: Colors.light.tint,
-          shadowOpacity: 0,
-          elevation: 0,
         },
+        headerShadowVisible: false,
         headerTintColor: Colors.light.background,
         headerTitleAlign: "left",
         headerTitleStyle: { fontWeight: "bold" },
@@ -100,7 +103,32 @@ function RootNavigator() {
       <Stack.Screen
         name="ChatRoom"
         component={ChatRoomScreen}
-        options={{ title: "Chat Room" }}
+        options={({ route }) => ({
+          title: route.params.title,
+          headerRight: () => (
+            <View
+              style={{
+                flexDirection: "row",
+                width: 100,
+                justifyContent: "space-between",
+                marginRight: 10,
+              }}
+            >
+              <FontAwesome5 name="video" size={22} color={"white"} />
+              <MaterialIcons name="call" size={22} color={"white"} />
+              <MaterialCommunityIcons
+                name="dots-vertical"
+                size={22}
+                color={"white"}
+              />
+            </View>
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="Contacts"
+        component={ContactsScreen}
+        options={{ title: "Contacts" }}
       />
       <Stack.Screen
         name="NotFound"
